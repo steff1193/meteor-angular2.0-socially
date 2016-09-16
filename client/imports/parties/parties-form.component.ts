@@ -2,20 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Meteor } from 'meteor/meteor';
 import { MdCheckbox } from '@angular2-material/checkbox';
-import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
-import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
+import { MdInput } from '@angular2-material/input';
+import { MdButton } from '@angular2-material/button';
 
 import { Parties } from '../../../both/collections/parties.collection';
-import { PartiesUpload } from './parties-upload.component';
+//import { PartiesUpload } from './parties-upload.component';
 
 import template from './parties-form.component.html';
 
 @Component({
   selector: 'parties-form',
   template,
-  directives: [REACTIVE_FORM_DIRECTIVES, MdCheckbox, MD_INPUT_DIRECTIVES, MD_BUTTON_DIRECTIVES, PartiesUpload]
+  directives: [REACTIVE_FORM_DIRECTIVES, MdCheckbox, MdInput, MdButton, PartiesUpload]
 })
-export class PartiesFormComponent implements OnInit {
+/*export class PartiesFormComponent implements OnInit {
   addForm: FormGroup;
   images: string[] = [];
 
@@ -62,4 +62,4 @@ export class PartiesFormComponent implements OnInit {
   onImage(imageId: string) {
     this.images.push(imageId);
   }
-}
+}*/

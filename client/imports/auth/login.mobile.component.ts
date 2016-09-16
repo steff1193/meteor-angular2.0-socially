@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MeteorComponent } from 'angular2-meteor';
 import { FormBuilder, FormGroup, Validators, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 import { Router , ROUTER_DIRECTIVES} from '@angular/router';
-import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
-import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
-import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
+import { MdInput } from '@angular2-material/input';
+import { MdToolbar } from '@angular2-material/toolbar';
+import { MdButton } from '@angular2-material/button';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
@@ -13,7 +13,7 @@ import template from './login.mobile.component.html';
 @Component({
   selector: 'login',
   template,
-  directives: [ROUTER_DIRECTIVES, MD_INPUT_DIRECTIVES, MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, MdInput, MdToolbar, MdButton, REACTIVE_FORM_DIRECTIVES],
 })
 export class LoginComponent extends MeteorComponent implements OnInit {
   error: string = '';
@@ -41,7 +41,7 @@ export class LoginComponent extends MeteorComponent implements OnInit {
 
   send() {
     if (this.phoneForm.valid) {
-      Accounts.requestPhoneVerification(this.phoneForm.value.phone, (err) => {
+      /*Accounts.requestPhoneVerification(this.phoneForm.value.phone, (err) => {
         if (err) {
           this.error = err.reason || err;
         } else {
@@ -50,20 +50,20 @@ export class LoginComponent extends MeteorComponent implements OnInit {
           // move to code verification
           this.isStepTwo = true;
         }
-      });
+      });*/
     }
   }
 
   verify() {
     if (this.verifyForm.valid) {
-      Accounts.verifyPhone(this.phone, this.verifyForm.value.code, (err) => {
+      /*Accounts.verifyPhone(this.phone, this.verifyForm.value.code, (err) => {
         if (err) {
           this.error = err.reason || err;
         }
         else {
           this.router.navigate(['/']);
         }
-      });
+      });*/
     }
   }
 }
