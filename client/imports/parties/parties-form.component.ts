@@ -13,9 +13,9 @@ import template from './parties-form.component.html';
 @Component({
   selector: 'parties-form',
   template,
-  directives: [REACTIVE_FORM_DIRECTIVES, MdCheckbox, MdInput, MdButton, PartiesUpload]
+  directives: [REACTIVE_FORM_DIRECTIVES, MdCheckbox, MdInput, MdButton/*, PartiesUpload*/]
 })
-/*export class PartiesFormComponent implements OnInit {
+export class PartiesFormComponent implements OnInit {
   addForm: FormGroup;
   images: string[] = [];
 
@@ -57,4 +57,4 @@ import template from './parties-form.component.html';
   onImage(imageId: string) {
     this.images.push(imageId);
   }
-}*/
+}
