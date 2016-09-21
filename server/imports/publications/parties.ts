@@ -2,7 +2,7 @@ import {Parties} from '../../../both/collections/parties.collection';
 import {Meteor} from 'meteor/meteor';
 import {Counts} from 'meteor/tmeasday:publish-counts';
 
-function buildQuery(partyId?: string, location?: string): Object {
+function buildQuery(partyId?: string): Object {
   const isAvailable = {
     $or: [
       { 'public': true },
@@ -25,13 +25,11 @@ function buildQuery(partyId?: string, location?: string): Object {
     return { $and: [{ _id: partyId }, isAvailable] };
   }
 
-  const searchRegEx = { '$regex': '.*' + (location || '') + '.*', '$options': 'i' };
-
-  return { $and: [{ 'location.name': searchRegEx }, isAvailable] };
+  return isAvailable;
 }
 
-Meteor.publish('parties', function(options: any, location?: string) {
-  const selector = buildQuery.call(this, null, location);
+Meteor.publish('parties', function(options: any) {
+  const selector = buildQuery.call(this, null);
 
   Counts.publish(this, 'numberOfParties', Parties.find(selector), { noReady: true });
 

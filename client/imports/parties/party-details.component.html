@@ -15,10 +15,6 @@
           <label>Party Description</label>
           <md-input [disabled]="!isOwner" [(ngModel)]="party.description" name="description"></md-input>
         </md-input-container>
-        <md-input-container>
-          <label>Location name</label>
-          <md-input [disabled]="!isOwner" [(ngModel)]="party.location.name" name="location"></md-input>
-        </md-input-container>
         <md-checkbox [(checked)]="party.public" name="public" aria-label="Public">
           Is public
         </md-checkbox>
@@ -35,21 +31,6 @@
             <button (click)="invite(user)" md-raised-button class="md-raised">Invite</button>
           </md-list-item>
         </md-list>
-
-        <div class="angular-google-map-container">
-          <sebm-google-map
-            style="height: 300px;"
-            [latitude]="lat || centerLat"
-            [longitude]="lng || centerLng"
-            [zoom]="8"
-            (mapClick)="mapClicked($event)">
-            <sebm-google-map-marker
-              *ngIf="lat && lng"
-              [latitude]="lat"
-              [longitude]="lng">
-            </sebm-google-map-marker>
-          </sebm-google-map>
-        </div>
       </form>
     </md-content>
   </div>

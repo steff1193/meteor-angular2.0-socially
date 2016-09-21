@@ -25,7 +25,6 @@ import template from './parties-form.component.html';
     this.addForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: [],
-      location: ['', Validators.required],
       public: [false]
     });
   }
@@ -33,7 +32,6 @@ import template from './parties-form.component.html';
   resetForm() {
     this.addForm.controls['name']['updateValue']('');
     this.addForm.controls['description']['updateValue']('');
-    this.addForm.controls['location']['updateValue']('');
     this.addForm.controls['public']['updateValue'](false);
   }
 
@@ -43,9 +41,6 @@ import template from './parties-form.component.html';
         Parties.insert({
           name: this.addForm.value.name,
           description: this.addForm.value.description,
-          location: {
-            name: this.addForm.value.location
-          },
           images: this.images,
           public: this.addForm.value.public,
           owner: Meteor.userId()
